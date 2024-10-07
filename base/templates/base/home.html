@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/css/home.css">
+    <title>Weather API</title>
+</head>
+<body>
+    {% block content %}
+        <h1>Hello,</h1>
+        <h1> Welcome to weather forecast!</h1>
+        <div class="bar">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="text" name="city" placeholder="Enter City">
+
+                <input type="submit" value="search">
+            </form>
+        </div>
+        <div class="re">
+            {% if result %}
+                <p><strong>Country code:</strong> {{result.country_code}}</p>
+                <p><strong>Current Condition:</strong> {{result.current_weather}}</p>
+
+                <p><strong>Temperature:</strong>  {{result.temp}}</p>
+                <p><strong>Current Pressure:</strong> {{result.pressure}}</p>
+                <p><strong>Current Humidity:</strong> {{result.humidity}}</p>
+                <p><strong>Country Coordinate:</strong> {{result.coordinate}}</p>
+
+
+            {% endif %}
+        </div>
+    {% endblock %}
+</body>
+</html>
